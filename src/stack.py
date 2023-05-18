@@ -16,8 +16,6 @@ class Stack:
 
     def __init__(self):
         """Конструктор класса Stack"""
-        # Список узлов стека
-        self.node_list = []
         # Верхний элемент стека
         self.top = None
 
@@ -27,12 +25,7 @@ class Stack:
 
         :param data: данные, которые будут добавлены на вершину стека
         """
-        # Определяем второй элемент узла стека
-        second_element = None if len(self.node_list) < 1 else self.node_list[-1]
-        # Определяем узел стека на вершине стека
-        self.top = Node(data, second_element)
-        # Добавляем новый узел в список узлов стека
-        self.node_list.append(self.top)
+        self.top = Node(data, self.top)
 
     def pop(self):
         """
@@ -40,4 +33,9 @@ class Stack:
 
         :return: данные удаленного элемента
         """
-        pass
+        # Вызываем исключение когда стек пустой
+        if not self.top:
+            raise Exception('Стек пустой, удалять нечего')
+        popped_data = self.top.data
+        self.top = self.top.next_node
+        return popped_data
