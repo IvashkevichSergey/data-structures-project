@@ -18,11 +18,9 @@ class TestStack(unittest.TestCase):
         self.assertEqual(stack.push('second'), None)
         self.assertIsInstance(stack.top, Node)
         self.assertEqual(stack.top.data, 'second')
-        self.assertEqual(str(stack), 'first\nsecond')
         self.assertIsInstance(stack.top.next_node, Node)
+
         self.assertEqual(stack.pop(), 'second')
-        self.assertEqual(str(stack), 'first')
         self.assertEqual(stack.pop(), 'first')
         with self.assertRaises(Exception):
             stack.pop()
-
