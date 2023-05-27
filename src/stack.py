@@ -39,3 +39,17 @@ class Stack:
         popped_data = self.top.data
         self.top = self.top.next_node
         return popped_data
+
+    def __str__(self):
+        """Магический метод для строкового представления объекта"""
+        # Если данных в очереди нет - возвращает пустую строку
+        if not self.top:
+            return ''
+        tmp_var = self.top
+        list_of_data = [self.top.data]
+        # Добавляем в список имеющиеся в очереди данные до тех пор,
+        # пока next_node не будет иметь значение None
+        while tmp_var.next_node:
+            tmp_var = tmp_var.next_node
+            list_of_data.append(tmp_var.data)
+        return '\n'.join(list_of_data)
