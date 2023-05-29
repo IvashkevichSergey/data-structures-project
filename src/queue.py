@@ -41,7 +41,12 @@ class Queue:
 
         :return: данные удаленного элемента
         """
-        pass
+        # Вызываем исключение когда очередь пустая
+        if not self.head:
+            return None
+        popped_data = self.head.data
+        self.head = self.head.next_node
+        return popped_data
 
     def __str__(self):
         """Магический метод для строкового представления объекта"""
