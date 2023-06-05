@@ -31,3 +31,10 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(ll.tail.next_node, None)
         self.assertIsInstance(ll.head.next_node, Node)
         self.assertEqual(str(ll), "{'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None")
+
+        self.assertEqual(ll.to_list(), [{'id': 0}, {'id': 1}, {'id': 2}, {'id': 3}])
+        self.assertEqual(ll.get_data_by_id(0), {'id': 0})
+
+        ll.insert_beginning('Hello')
+        ll.insert_beginning((1, 5, 7, 9))
+        self.assertEqual(ll.get_data_by_id(1), {'id': 1})
